@@ -1,6 +1,6 @@
 # Tom Rooman
 
-My project is available at [https://tomrooman.site](https://tomrooman.site).
+My project is available at [https://dofus-rearing.com](https://dofus-rearing.com).
 
 ## Available scripts
 

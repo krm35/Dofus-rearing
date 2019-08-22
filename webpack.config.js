@@ -6,7 +6,11 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
   output: {
     filename: 'bundle.js',
+    publicPath: '/',
     path: path.resolve(__dirname, 'dist')
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     rules: [

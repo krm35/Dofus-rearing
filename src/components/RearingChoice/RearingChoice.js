@@ -28,7 +28,7 @@ export default class RearingChoice extends React.Component {
       this.state.rendering ||
       <React.Fragment>
         <div className="top-infos"></div>
-        <div className="principal-container home-menu">
+        <div className="home-menu">
           <button className="btn btn-infos"
             onClick={() => this.handleSetRendering(
               <Informations showOrRemove="show" hstr={this.handleSetRendering} />
