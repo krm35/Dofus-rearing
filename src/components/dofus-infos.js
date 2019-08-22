@@ -1,3 +1,5 @@
+/* eslint indent: 'off', max-len: 'off'*/
+
 const dragodindes = [
       [
             ['Dragodinde amande'], ['48H'], ['Parchemin doré'],
@@ -268,8 +270,7 @@ const crafts = [
       ['Abreuvoir', [
             ['Bulbig brozeur', ['Essence de bulbig brozeur', 1, 'Fluide glacial', 1, 'Tatouage de mauvais garçon', 2,
                   'Bout de blop reinette', 1, 'Peau de dragoeuf guerrier', 1, 'Efficacité', 50, 'Utilisations', 2500,
-            ],
-            ],
+            ]],
       ],
       ],
 
@@ -423,3 +424,6 @@ const crafts = [
       ],
       ],
 ];
+
+exports.dragodindes = dragodindes;
+exports.crafts = crafts;
