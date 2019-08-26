@@ -1,0 +1,32 @@
+nav a {
+  margin-top : 0.3rem;
+  margin-bottom : 0.3rem;
+}
+
+.sign-up-login li:first-child {
+  margin-right : 1rem; 
+}
+
+nav {
+  min-width : 600px;
+}
+
+.sign-up-login li {
+  cursor : pointer;
+  padding : 0.5rem 1rem;
+}
+
+nav svg {
+  margin-right : 0.3rem;
+}
+
+.sign-in, .sign-up {
+  border-radius : 30px;
+  border : 1px solid black;
+}
+
+.sign-in:hover, .sign-up:hover {
+  background-color : black;
+  color : white;
+  transition-duration: 0.3s;
+}

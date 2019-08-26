@@ -2,15 +2,13 @@
 
 import React from 'react';
 import RearingChoice from '../RearingChoice/RearingChoice';
+import NavComponent from '../NavComponent/NavComponent';
 import Home from './../Home/Home';
 
 export default class RouterComponent extends React.Component {
 
   constructor() {
     super()
-    this.state = {
-      content: false
-    }
     let url = window.location.href.split('/');
     let content = '';
     let page = url[3] === "" ? "/" : url[3];
@@ -21,7 +19,9 @@ export default class RouterComponent extends React.Component {
       console.log('rearing')
     }
     else {
-      console.log('AUTRE')
+      this.state = {
+        content: <Home />
+      }
     }
   }
 
@@ -34,6 +34,7 @@ export default class RouterComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <NavComponent />
         {this.state.content}
 
       </React.Fragment>

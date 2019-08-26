@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 
@@ -7,19 +6,14 @@ global.dbConnection = false
 
 require('./models/index');
 
-app.use(bodyParser.urlencoded({ extended: false }), () => {
-  console.log('404')
-});
-
-app.get('/test', (req, res) => {
+app.post('/users/:id', (req, res) => {
+  let userId = req.params.id ? req.params.id : ''
   let usersCollection = dbConnection.collection('users')
   usersCollection.find({
-    // userId: message.author.id,
-    // serverId: message.guild.id
+    userId
   }).toArray(function (err, users) {
     console.log('USER : ', users)
   })
-  // const name = req.query.name || 'World';
 });
 
 app.listen(3001, () => {

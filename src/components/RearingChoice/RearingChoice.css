@@ -110,6 +110,7 @@ input:focus {
     margin-right : auto;
     overflow-y : auto;
     max-width:  800px;
+    min-width : 480px;
 }
 
 .infos-input {
