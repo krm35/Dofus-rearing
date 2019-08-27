@@ -11,6 +11,13 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    // Send API requests on localhost to API server get around CORS.
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        pathRewrite: { '^/api': '' }
+      }
+    }
   },
   module: {
     rules: [

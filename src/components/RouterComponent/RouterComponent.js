@@ -17,18 +17,18 @@ export default class RouterComponent extends React.Component {
     page = page + '/' + page_arg;
     if (page === "rearing/") {
       console.log('rearing')
+      // this.state = {
+      //   content: <RearingChoice />
+      // }
+      this.state = {
+        content: 'REARING'
+      }
     }
     else {
       this.state = {
         content: <Home />
       }
     }
-  }
-
-  setContent(component) {
-    this.setState({
-      content: component
-    })
   }
 
   render() {

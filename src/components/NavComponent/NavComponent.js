@@ -12,14 +12,15 @@ export default class NavComponent extends React.Component {
   constructor() {
     super()
     this.state = {
-      modalShow: false
+      show: false
     }
     this.handleClose = this.handleClose.bind(this)
   }
 
-  setModal(arg) {
+  setModal(arg, choice = '') {
     this.setState({
-      modalShow: arg
+      show: arg,
+      choice
     })
   }
 
@@ -30,7 +31,7 @@ export default class NavComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <ModalComponent modalShow={this.state.modalShow} handleClose={this.handleClose} />
+        <ModalComponent show={this.state.show} handleClose={this.handleClose} choice={this.state.choice} />
         <nav className="navbar navbar-expand navbar-light bg-light">
           <a className="navbar-brand" href="#">Elevage</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,11 +45,11 @@ export default class NavComponent extends React.Component {
               </li>
             </ul>
             <ul className="nav navbar-nav navbar-right sign-up-login">
-              <li className="sign-up" onClick={() => this.setModal(true)}>
+              <li className="sign-up" onClick={() => this.setModal(true, 'sign-up')}>
                 <FontAwesomeIcon icon={faUser} />
                 Inscription
               </li>
-              <li className="sign-in" onClick={() => this.setModal(true)}>
+              <li className="sign-in" onClick={() => this.setModal(true, 'sign-in')}>
                 <FontAwesomeIcon icon={faSignInAlt} />
                 Connexion
               </li>
