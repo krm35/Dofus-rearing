@@ -31,7 +31,7 @@ export default class NavComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <ModalComponent show={this.state.show} handleClose={this.handleClose} choice={this.state.choice} />
+        <ModalComponent show={this.state.show} handleClose={this.handleClose} choice={this.state.choice} cookies={this.props.cookies} />
         <nav className="navbar navbar-expand navbar-light bg-light">
           <a className="navbar-brand" href="#">Elevage</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

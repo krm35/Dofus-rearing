@@ -43,7 +43,20 @@ export default class ModalComponent extends React.Component {
   }
 
   signIn() {
-
+    axios.post('/api/users/connexion', {
+      pseudo: this.state.pseudo,
+      password: this.state.password
+    })
+      .then(respond => {
+        if (respond.data) {
+          console.log('Connecte ! ', respond)
+          this.props.cookies('create', respond.data)
+        }
+        console.log('respond : ', respond)
+      })
+      .catch((e) => {
+        console.log('Erreur : ', e)
+      })
   }
 
   signUp() {
@@ -51,8 +64,11 @@ export default class ModalComponent extends React.Component {
       pseudo: this.state.pseudo,
       password: this.state.password
     })
-      .then(user => {
-        console.log('Inscrit ! ', user)
+      .then(respond => {
+        if (respond.data) {
+          console.log('Inscrit ! ', respond)
+          this.props.cookies('create', respond.data)
+        }
       })
       .catch((e) => {
         console.log('Erreur : ', e)

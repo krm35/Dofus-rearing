@@ -3,7 +3,10 @@
 import React from 'react';
 import RearingChoice from '../RearingChoice/RearingChoice';
 import NavComponent from '../NavComponent/NavComponent';
+import Cookies from 'universal-cookie';
 import Home from './../Home/Home';
+
+const cookies = new Cookies()
 
 export default class RouterComponent extends React.Component {
 
@@ -31,10 +34,22 @@ export default class RouterComponent extends React.Component {
     }
   }
 
+  cookies(choice, values = {}) {
+    if (choice === "create") {
+      cookies.set(values.name, {
+        id: values.id,
+        pseudo: values.pseudo
+      })
+    }
+    else {
+      cookies.remove(values.name)
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
-        <NavComponent />
+        <NavComponent cookies={this.cookies} />
         {this.state.content}
 
       </React.Fragment>

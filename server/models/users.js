@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var bcrypt = require('bcrypt');
 
 var userSchema = new Schema({
   pseudo: String,
@@ -14,13 +15,6 @@ userSchema.statics.findByPseudo = function (pseudo) {
 
 userSchema.statics.findById = function (id) {
   return this.model('Users').find({ _id: id });
-}
-
-userSchema.statics.checkConnection = function (pseudo, password) {
-  return this.model('Users').find({
-    pseudo: pseudo,
-    password: password
-  });
 }
 
 module.exports = userSchema;
