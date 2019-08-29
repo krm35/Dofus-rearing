@@ -30,3 +30,13 @@ nav svg {
   color : white;
   transition-duration: 0.3s;
 }
+
+.dropdown-profile {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.nav-disconnect {
+  cursor: pointer;
+  color : red !important;
+}

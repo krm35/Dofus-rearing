@@ -1,10 +1,13 @@
 'use strict';
 
 import React from 'react';
-import RearingChoice from '../RearingChoice/RearingChoice';
+import axios from 'axios';
+// import RearingChoice from '../RearingChoice/RearingChoice';
 import NavComponent from '../NavComponent/NavComponent';
 import Cookies from 'universal-cookie';
 import Home from './../Home/Home';
+
+import './style.css';
 
 const cookies = new Cookies()
 
@@ -12,44 +15,71 @@ export default class RouterComponent extends React.Component {
 
   constructor() {
     super()
+    this.state = {
+      content: '',
+      userCookie: {}
+    }
+    this.cookies = this.cookies.bind(this)
+  }
+
+  componentDidMount() {
     let url = window.location.href.split('/');
-    let content = '';
     let page = url[3] === "" ? "/" : url[3];
-    let origine_page = page
     let page_arg = url[4] ? url[4] : '';
     page = page + '/' + page_arg;
+    this.getComponentByUrl(page)
+  }
+
+  checkIfConnected() {
+    let userC = cookies.get("dofus-rearing-user")
+    if (userC) {
+      return userC
+    }
+    return {}
+  }
+
+  getComponentByUrl(page) {
+    let userC = this.checkIfConnected()
+    let content = ''
     if (page === "rearing/") {
       console.log('rearing')
       // this.state = {
       //   content: <RearingChoice />
       // }
-      this.state = {
-        content: 'REARING'
-      }
+      content = 'REARING'
     }
     else {
-      this.state = {
-        content: <Home />
-      }
+      content = <Home />
     }
+    console.log('user cookie : ', userC)
+    this.setState({
+      content,
+      userCookie: userC
+    })
   }
 
   cookies(choice, values = {}) {
     if (choice === "create") {
-      cookies.set(values.name, {
+      cookies.set('dofus-rearing-user', {
         id: values.id,
         pseudo: values.pseudo
       })
+      this.setState({
+        userCookie: cookies.get('dofus-rearing-user')
+      })
     }
     else {
-      cookies.remove(values.name)
+      cookies.remove('dofus-rearing-user')
+      this.setState({
+        userCookie: {}
+      })
     }
   }
 
   render() {
     return (
       <React.Fragment>
-        <NavComponent cookies={this.cookies} />
+        <NavComponent cookies={this.cookies} userCookie={this.state.userCookie} />
         {this.state.content}
 
       </React.Fragment>

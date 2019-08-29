@@ -4,6 +4,7 @@ import React from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import './modalComponent.css';
@@ -36,7 +37,8 @@ export default class ModalComponent extends React.Component {
       }
     }
     else {
-      if (pseudo.length >= 2 && password.length && confPassword.length && (password === confPassword)) {
+      if (pseudo.length >= 2 && password.length && confPassword.length
+        && password === confPassword) {
         this.signUp()
       }
     }
@@ -49,10 +51,9 @@ export default class ModalComponent extends React.Component {
     })
       .then(respond => {
         if (respond.data) {
-          console.log('Connecte ! ', respond)
           this.props.cookies('create', respond.data)
+          this.props.handleClose()
         }
-        console.log('respond : ', respond)
       })
       .catch((e) => {
         console.log('Erreur : ', e)
@@ -66,8 +67,8 @@ export default class ModalComponent extends React.Component {
     })
       .then(respond => {
         if (respond.data) {
-          console.log('Inscrit ! ', respond)
           this.props.cookies('create', respond.data)
+          this.props.handleClose()
         }
       })
       .catch((e) => {
@@ -117,11 +118,18 @@ export default class ModalComponent extends React.Component {
         </Modal.Body>
         <Modal.Footer>
           {this.props.choice === "sign-in" ?
-            <button onClick={() => this.verification('sign-in')}>Me connecter</button> :
-            <button onClick={() => this.verification('sign-up')}>M'inscrire</button>
+            <button onClick={() => this.verification("sign-in")}>Me connecter</button> :
+            <button onClick={() => this.verification("sign-up")}>M'inscrire</button>
           }
         </Modal.Footer>
       </Modal >
     )
   }
 }
+
+ModalComponent.propTypes = {
+  choice: PropTypes.string,
+  cookies: PropTypes.func,
+  show: PropTypes.bool,
+  handleClose: PropTypes.func
+};

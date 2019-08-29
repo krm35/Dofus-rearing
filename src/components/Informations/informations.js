@@ -4,6 +4,7 @@
 
 import React from 'react';
 import RearingChoice from './../RearingChoice/RearingChoice';
+import PropTypes from "prop-types";
 
 export default class Informations extends React.Component {
 
@@ -136,3 +137,8 @@ export default class Informations extends React.Component {
   //   this.show_informations('show');
   // }
 }
+
+Informations.propTypes = {
+  showOrRemove: PropTypes.string,
+  hstr: PropTypes.func
+};

@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.model('Users', require('../models/users.js'));
 var cookies = require('./middlewares/cookies');
 var bcrypt = require('bcrypt');
-var util = require('util');
 
 router.post('/subscribe', function (req, res, next) {
   userSchema.findByPseudo(req.body.pseudo)
@@ -16,10 +15,8 @@ router.post('/subscribe', function (req, res, next) {
             password: hash
           });
           newUser.save();
-          let cookie = cookies.create({ userId: newUser._id, pseudo: newUser.pseudo }, req, res)
-          res.send(cookie);
+          res.send({ id: newUser._id, pseudo: newUser.pseudo });
         });
-
       }
       else {
         res.send(false);
@@ -34,9 +31,7 @@ router.post('/connexion', function (req, res, next) {
       if (user && user.length === 1) {
         bcrypt.compare(req.body.password, user[0].password, function (err, same) {
           if (same) {
-            let cookie = cookies.create({ userId: user[0]._id, pseudo: user[0].pseudo }, req, res)
-            console.log('cookie created : ', cookie)
-            res.send(cookie);
+            res.send({ id: user[0]._id, pseudo: user[0].pseudo });
           }
           else {
             res.send(false)
