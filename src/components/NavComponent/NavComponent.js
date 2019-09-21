@@ -36,8 +36,9 @@ export default class NavComponent extends React.Component {
           choice={this.state.choice}
           cookies={this.props.cookies}
         />
-        <nav className="navbar navbar-expand navbar-light bg-light">
-          <a className="navbar-brand" href="#">Elevage</a>
+        <nav className="navbar navbar-expand navbar-light">
+          <a className="navbar-brand" href="#">dofus élevage</a>
+          <span className="diagonal-divider"></span>
           <button className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -49,7 +50,7 @@ export default class NavComponent extends React.Component {
           </button>
 
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
+            <li className="nav-item nav-active">
               <a className="nav-link" href="#">
                 Accueil<span className="sr-only">(current)</span>
               </a>
@@ -103,7 +104,7 @@ export default class NavComponent extends React.Component {
           }
 
         </nav>
-      </React.Fragment>
+      </React.Fragment >
     )
   }
 }

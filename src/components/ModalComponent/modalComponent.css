@@ -1,7 +1,25 @@
 input {
-  background-color : white;
-  border-color : grey;
+  background-color : white !important;
+  border : 1px solid black !important;
   border-radius : 5px;
+}
+
+.modal-header {
+  color : rgb(105, 155, 189);
+}
+
+.modal-footer button {
+  background-color : rgb(82, 123, 151);
+  color : white;
+  transition-duration: 0.3s;
+  border : none;
+  padding : 0.5rem 1rem;
+  width : 100%;
+}
+
+.modal-footer button:hover {
+  letter-spacing : 0.7rem;
+  transition-duration: 0.3s;
 }
 
 .pseudo {

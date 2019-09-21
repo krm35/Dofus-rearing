@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var userSchema = mongoose.model('Users', require('../models/users.js'));
-var cookies = require('./middlewares/cookies');
 var bcrypt = require('bcrypt');
 
 router.post('/subscribe', function (req, res, next) {
