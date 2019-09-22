@@ -1,3 +1,29 @@
 h1 {
   color : rgb(228, 228, 228);
 }
+
+.home-text {
+  /* border-top : 1px solid rgb(168, 168, 168); */
+}
+
+.one {
+  font-size : 1.5rem;
+}
+
+.one {
+  /* border-top : 1px solid rgb(168, 168, 168); */
+  border-bottom : 1px solid rgb(196, 196, 196);
+  margin-bottom : 1.5rem;
+  margin-top : 1.5rem;
+  padding-top : 3rem;
+  padding-bottom : 3rem;
+}
+
+.one:first-child {
+  border-top : 1px solid rgb(196, 196, 196);
+}
+
+.home-infos div svg {
+  font-size : 7rem;
+  color : rgb(39, 39, 39);
+}

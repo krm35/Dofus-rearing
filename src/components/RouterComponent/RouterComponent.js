@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import axios from 'axios';
 // import RearingChoice from '../RearingChoice/RearingChoice';
 import NavComponent from '../NavComponent/NavComponent';
 import Cookies from 'universal-cookie';
@@ -17,7 +16,8 @@ export default class RouterComponent extends React.Component {
     super()
     this.state = {
       content: '',
-      userCookie: {}
+      userCookie: {},
+      url: ''
     }
     this.cookies = this.cookies.bind(this)
   }
@@ -54,7 +54,8 @@ export default class RouterComponent extends React.Component {
     console.log('user cookie : ', userC)
     this.setState({
       content,
-      userCookie: userC
+      userCookie: userC,
+      url: page
     })
   }
 
@@ -79,7 +80,7 @@ export default class RouterComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <NavComponent cookies={this.cookies} userCookie={this.state.userCookie} />
+        <NavComponent cookies={this.cookies} userCookie={this.state.userCookie} url={this.state.url} />
         {this.state.content}
 
       </React.Fragment>

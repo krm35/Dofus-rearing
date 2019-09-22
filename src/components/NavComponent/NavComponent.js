@@ -28,6 +28,7 @@ export default class NavComponent extends React.Component {
   }
 
   render() {
+    console.log(this.props.url)
     return (
       <React.Fragment>
         <ModalComponent
@@ -50,7 +51,7 @@ export default class NavComponent extends React.Component {
           </button>
 
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item nav-active">
+            <li className={this.props.url === "//" || this.props.url === "#/" ? "nav-item nav-active" : "nav-item"}>
               <a className="nav-link" href="#">
                 Accueil<span className="sr-only">(current)</span>
               </a>
@@ -112,5 +113,6 @@ export default class NavComponent extends React.Component {
 
 NavComponent.propTypes = {
   cookies: PropTypes.func,
-  userCookie: PropTypes.object
+  userCookie: PropTypes.object,
+  url: PropTypes.string
 };
