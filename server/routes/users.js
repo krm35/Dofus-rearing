@@ -18,7 +18,7 @@ router.post('/subscribe', function (req, res, next) {
         });
       }
       else {
-        res.send(false);
+        res.send('already use');
       }
     })
     .catch(err => console.log('ERR', err))
@@ -33,10 +33,13 @@ router.post('/connexion', function (req, res, next) {
             res.send({ id: user[0]._id, pseudo: user[0].pseudo });
           }
           else {
-            res.send(false)
+            res.send('already use')
           }
         });
 
+      }
+      else {
+        res.send('already use')
       }
     })
     .catch(err => console.log('ERR', err))

@@ -8,6 +8,10 @@ input {
   color : rgb(105, 155, 189);
 }
 
+.modal-body svg {
+  margin-right : 0.5rem;
+}
+
 .modal-footer button {
   background-color : rgb(82, 123, 151);
   color : white;

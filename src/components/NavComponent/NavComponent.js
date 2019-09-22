@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSignInAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import './navComponent.css';
 import ModalComponent from '../ModalComponent/ModalComponent';
@@ -69,14 +69,15 @@ export default class NavComponent extends React.Component {
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false">
-                      {this.props.userCookie.pseudo}
+                      <FontAwesomeIcon icon={faUserCircle} />
                     </a>
                     <div
                       className="dropdown-menu dropdown-profile"
                       aria-labelledby="navbarDropdownMenuLink">
+                      <h5 className="dropdown-pseudo">{this.props.userCookie.pseudo}</h5>
                       <a
-                        className="dropdown-item"
-                        href={`/user/${this.props.userCookie.id}`}>
+                        className="dropdown-item profile"
+                        href={`/users/${this.props.userCookie.id}`}>
                         Profile
                       </a>
                       <div className="dropdown-divider"></div>

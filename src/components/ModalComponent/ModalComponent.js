@@ -1,8 +1,8 @@
 'use strict';
 
 import React from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -16,9 +16,11 @@ export default class ModalComponent extends React.Component {
     this.state = {
       pseudo: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      error: false
     }
     this.handleChangeInput = this.handleChangeInput.bind(this)
+    this.handleClose = this.handleClose.bind(this)
   }
 
   handleChangeInput(e) {
@@ -33,42 +35,42 @@ export default class ModalComponent extends React.Component {
     let confPassword = this.state.confirmPassword
     if (choice === "sign-in") {
       if (pseudo && pseudo.length >= 2 && password && password.length) {
-        this.signIn()
+        this.sign('in')
       }
     }
     else {
       if (pseudo.length >= 2 && password.length && confPassword.length
         && password === confPassword) {
-        this.signUp()
+        this.sign('up')
       }
     }
   }
 
-  signIn() {
-    axios.post('/api/users/connexion', {
-      pseudo: this.state.pseudo,
-      password: this.state.password
+  handleClose() {
+    this.setState({
+      error: false
     })
-      .then(respond => {
-        if (respond.data) {
-          this.props.cookies('create', respond.data)
-          this.props.handleClose()
-        }
-      })
-      .catch((e) => {
-        console.log('Erreur : ', e)
-      })
+    this.props.handleClose()
   }
 
-  signUp() {
-    axios.post('/api/users/subscribe', {
+  sign(upOrIn) {
+    let url = upOrIn === 'up' ? '/api/users/subscribe' : '/api/users/connexion'
+    axios.post(url, {
       pseudo: this.state.pseudo,
       password: this.state.password
     })
       .then(respond => {
+        console.log(respond)
         if (respond.data) {
-          this.props.cookies('create', respond.data)
-          this.props.handleClose()
+          if (respond.data === "already use") {
+            this.setState({
+              error: upOrIn === 'up' ? 'Pseudo déjà utilisé !' : 'Identifiant ou mot de passe incorrect'
+            })
+          }
+          else {
+            this.props.cookies('create', respond.data)
+            this.handleClose()
+          }
         }
       })
       .catch((e) => {
@@ -79,7 +81,7 @@ export default class ModalComponent extends React.Component {
   render() {
     return (
       <Modal
-        onHide={this.props.handleClose}
+        onHide={this.handleClose}
         show={this.props.show}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -91,6 +93,11 @@ export default class ModalComponent extends React.Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {this.state.error ?
+            <div className="alert alert-danger" role="alert">
+              <FontAwesomeIcon icon={faTimesCircle} />
+              {this.state.error}
+            </div> : null}
           <h6>Pseudo <span className="pseudo-min-caract">(Min 2 caractères)</span></h6>
           <input
             className="pseudo"

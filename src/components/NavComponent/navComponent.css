@@ -55,7 +55,28 @@ nav svg {
   left: auto !important;
 }
 
-.nav-disconnect {
+.dropdown-profile .nav-disconnect {
   cursor: pointer;
-  color : red !important;
+  color : rgb(212, 34, 34) !important;
+}
+
+.dropdown-profile .profile {
+  cursor: pointer;
+  color : rgb(105, 155, 189) !important;
+}
+
+.dropdown-pseudo {
+  background-color : rgb(39, 39, 39);
+  color : rgb(105, 153, 34);
+  padding-top : 0.7rem;
+  padding-bottom : 0.7rem;
+  text-align : center;
+}
+
+.dropdown svg {
+  font-size : 2.2rem;
+}
+
+.dropdown-menu {
+  padding-top : 0 !important;
 }
