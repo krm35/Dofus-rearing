@@ -13,14 +13,14 @@ module.exports = {
     https: true,
     historyApiFallback: true,
     // Send API requests on localhost to API server get around CORS.
-    proxy: {
-      '/api': {
-        target: 'https://localhost:3001/',
-        secure: false,
-        changeOrigin: true,
-        pathRewrite: { '^/api': '' }
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://localhost:3001/',
+    //     secure: false,
+    //     changeOrigin: true,
+    //     pathRewrite: { '^/api': '' }
+    //   }
+    // }
   },
   module: {
     rules: [
