@@ -15,7 +15,7 @@ module.exports = {
     // Send API requests on localhost to API server get around CORS.
     proxy: {
       '/api': {
-        target: 'https://localhost',
+        target: 'https://localhost/api',
         secure: false,
         changeOrigin: true,
         pathRewrite: { '^/api': '' }
