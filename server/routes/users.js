@@ -45,7 +45,7 @@ router.post('/connexion', function (req, res, next) {
     .catch(err => console.log('ERR', err))
 });
 
-router.get('/:id', function (req, res, next) {
+router.post('/:id', function (req, res, next) {
   userSchema.findById(req.params.id)
     .then(user => {
       if (user.length === 1) {
