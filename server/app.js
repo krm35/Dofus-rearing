@@ -5,8 +5,14 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var userRouter = require('./routes/users');
 var app = express();
+var cors = require('cors')
+
 
 mongoose.connect('mongodb://localhost/dofus-rearing', { useNewUrlParser: true })
+
+
+// Then pass them to cors:
+app.use(cors());
 
 app.use(logger('dev'));
 
@@ -31,6 +37,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  next()
   //res.render('error');
 });
 

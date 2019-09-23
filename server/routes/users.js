@@ -26,6 +26,7 @@ router.post('/subscribe', function (req, res, next) {
 
 router.post('/connexion', function (req, res, next) {
   console.log('cdonnexion')
+  res.header("Access-Control-Allow-Origin", "*")
   userSchema.findByPseudo(req.body.pseudo)
     .then(user => {
       if (user && user.length === 1) {
