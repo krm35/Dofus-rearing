@@ -3,11 +3,18 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var cors = require('cors')
+var router = express.Router();
 var userRouter = require('./routes/users');
 var app = express();
 
 mongoose.connect('mongodb://localhost/dofus-rearing', { useNewUrlParser: true })
+
+router.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "PUT, GET,POST");
+  next();
+});
 
 app.use(logger('dev'));
 app.use(express.json());
