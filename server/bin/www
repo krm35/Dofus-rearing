@@ -14,7 +14,7 @@ var fs = require('fs');
 /**
  * Get port from environment and store in Express.
  */
-var port = '443';
+var port = '3001';
 app.set('port', port);
 
 /**
