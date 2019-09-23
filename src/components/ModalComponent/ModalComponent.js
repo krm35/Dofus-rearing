@@ -60,7 +60,7 @@ export default class ModalComponent extends React.Component {
       password: this.state.password
     })
       .then(respond => {
-        console.log(respond)
+        //console.log(respond)
         if (respond.data) {
           if (respond.data === "already use") {
             this.setState({

@@ -51,7 +51,7 @@ export default class RouterComponent extends React.Component {
     else {
       content = <Home />
     }
-    console.log('user cookie : ', userC)
+    //console.log('user cookie : ', userC)
     this.setState({
       content,
       userCookie: userC,
@@ -80,9 +80,11 @@ export default class RouterComponent extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <NavComponent cookies={this.cookies} userCookie={this.state.userCookie} url={this.state.url} />
+        <NavComponent
+          cookies={this.cookies}
+          userCookie={this.state.userCookie}
+          url={this.state.url} />
         {this.state.content}
-
       </React.Fragment>
     )
   }

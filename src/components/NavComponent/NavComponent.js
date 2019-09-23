@@ -28,7 +28,7 @@ export default class NavComponent extends React.Component {
   }
 
   render() {
-    console.log(this.props.url)
+    //console.log(this.props.url)
     return (
       <React.Fragment>
         <ModalComponent
@@ -51,7 +51,8 @@ export default class NavComponent extends React.Component {
           </button>
 
           <ul className="navbar-nav mr-auto">
-            <li className={this.props.url === "//" || this.props.url === "#/" ? "nav-item nav-active" : "nav-item"}>
+            <li className={this.props.url === "//" || this.props.url === "#/" ?
+              "nav-item nav-active" : "nav-item"}>
               <a className="nav-link" href="#">
                 Accueil<span className="sr-only">(current)</span>
               </a>
