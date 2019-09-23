@@ -55,7 +55,7 @@ export default class ModalComponent extends React.Component {
 
   sign(upOrIn) {
     let url = upOrIn === 'up' ? '/api/users/subscribe' : '/api/users/connexion'
-    axios.post('https://localhost/' + url, {
+    axios.post('https://localhost' + url, {
       pseudo: this.state.pseudo,
       password: this.state.password
     })
