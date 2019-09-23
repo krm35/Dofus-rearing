@@ -6,4 +6,4 @@ dist
 config
 yarn-error.log
 server/bin/server.cert
-server/bin/server/key
+server/bin/server.key
