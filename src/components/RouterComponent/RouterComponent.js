@@ -28,6 +28,13 @@ export default class RouterComponent extends React.Component {
     let page_arg = url[4] ? url[4] : '';
     page = page + '/' + page_arg;
     this.getComponentByUrl(page)
+    if (window.location.href.split('/')[2].indexOf(':') != -1) {
+      global.api = "https://" + window.location.href.split('/')[2].split(':')[0] + ':3001'
+    }
+    else {
+      global.api = "https://" + window.location.href.split('/')[2] + ':3001'
+    }
+
   }
 
   checkIfConnected() {
