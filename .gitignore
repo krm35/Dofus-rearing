@@ -5,3 +5,5 @@ package-lock.json
 dist
 config
 yarn-error.log
+server/bin/server.cert
+server/bin/server/key

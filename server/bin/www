@@ -24,6 +24,8 @@ app.set('port', port);
 
 // var server = http.createServer(app);
 var server = https.createServer({
+  // key: fs.readFileSync(path.join(__dirname, '../bin') + '/server.key'),
+  // cert: fs.readFileSync(path.join(__dirname, '../bin') + '/server.cert')
   key: fs.readFileSync(path.join(__dirname, '../bin') + '/server.key'),
   cert: fs.readFileSync(path.join(__dirname, '../bin') + '/server.cert')
 }, app)
