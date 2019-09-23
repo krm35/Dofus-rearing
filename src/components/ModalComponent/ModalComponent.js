@@ -33,7 +33,6 @@ export default class ModalComponent extends React.Component {
     let pseudo = this.state.pseudo
     let password = this.state.password
     let confPassword = this.state.confirmPassword
-    console.log('PASSWORD : ', this.state.password)
     if (choice === "sign-in") {
       if (pseudo && pseudo.length >= 2 && password && password.length) {
         this.sign('in')
