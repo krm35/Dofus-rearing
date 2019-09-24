@@ -38,7 +38,7 @@ export default class NavComponent extends React.Component {
           cookies={this.props.cookies}
         />
         <nav className="navbar navbar-expand navbar-light">
-          <a className="navbar-brand" href="#">dofus élevage</a>
+          <a className="navbar-brand" href="/">dofus élevage</a>
           <span className="diagonal-divider"></span>
           <button className="navbar-toggler"
             type="button"
@@ -51,9 +51,9 @@ export default class NavComponent extends React.Component {
           </button>
 
           <ul className="navbar-nav mr-auto">
-            <li className={this.props.url === "//" || this.props.url === "#/" ?
+            <li className={this.props.url != "/elevage" ?
               "nav-item nav-active" : "nav-item"}>
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/">
                 Accueil<span className="sr-only">(current)</span>
               </a>
             </li>
