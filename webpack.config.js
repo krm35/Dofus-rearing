@@ -79,6 +79,9 @@ module.exports = {
     }),
     new CopyPlugin([
       { from: "./src/public/assets", to: 'assets' }
+    ]),
+    new CopyPlugin([
+      { from: "./src/public/favicon.png", to: 'src/public' }
     ])
   ]
 };
