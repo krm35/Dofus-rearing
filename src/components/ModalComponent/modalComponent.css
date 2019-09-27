@@ -12,6 +12,17 @@ input {
   margin-right : 0.5rem;
 }
 
+.pwd-icon {
+  margin-left : 0.5rem;
+  padding : 0.2rem;
+  font-size : 1.7rem;
+  cursor : pointer;
+}
+
+.pwd-icon:hover {
+  color : grey;
+}
+
 .modal-footer button {
   background-color : rgb(82, 123, 151);
   color : white;

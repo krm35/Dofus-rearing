@@ -2,10 +2,11 @@
 
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import $ from 'jquery';
 
 import './modalComponent.css';
 
@@ -17,7 +18,9 @@ export default class ModalComponent extends React.Component {
       pseudo: '',
       password: '',
       confirmPassword: '',
-      error: false
+      error: false,
+      showConfPwdIcon: false,
+      showPwdIcon: false
     }
     this.handleChangeInput = this.handleChangeInput.bind(this)
     this.handleClose = this.handleClose.bind(this)
@@ -78,6 +81,35 @@ export default class ModalComponent extends React.Component {
       })
   }
 
+  showOrHidePassword(normalOrConfirm) {
+    let showConfPwdIcon = this.state.showConfPwdIcon;
+    let showPwdIcon = this.state.showPwdIcon;
+    if (normalOrConfirm === "normal") {
+      if ($('.password')[0].type === "text") {
+        $('.password')[0].type = "password";
+        showPwdIcon = false;
+      }
+      else {
+        $('.password')[0].type = "text";
+        showPwdIcon = true;
+      }
+    }
+    else {
+      if ($('.confirm-password')[0].type === "text") {
+        $('.confirm-password')[0].type = "password";
+        showConfPwdIcon = false;
+      }
+      else {
+        $('.confirm-password')[0].type = "text";
+        showConfPwdIcon = true;
+      }
+    }
+    this.setState({
+      showConfPwdIcon,
+      showPwdIcon
+    })
+  }
+
   render() {
     return (
       <Modal
@@ -111,6 +143,10 @@ export default class ModalComponent extends React.Component {
             name="password"
             onChange={this.handleChangeInput}
           ></input>
+          {this.state.showPwdIcon ?
+            <FontAwesomeIcon icon={faEyeSlash} className="pwd-icon" onClick={() => { this.showOrHidePassword('normal') }} /> :
+            <FontAwesomeIcon icon={faEye} className="pwd-icon" onClick={() => { this.showOrHidePassword('normal') }} />
+          }
           {this.props.choice === "sign-up" ?
             <span>
               <h6>Confirmer le mot de passe</h6>
@@ -120,6 +156,10 @@ export default class ModalComponent extends React.Component {
                 name="confirmPassword"
                 onChange={this.handleChangeInput}
               ></input>
+              {this.state.showConfPwdIcon ?
+                <FontAwesomeIcon icon={faEyeSlash} className="pwd-icon" onClick={() => { this.showOrHidePassword('confirm') }} /> :
+                <FontAwesomeIcon icon={faEye} className="pwd-icon" onClick={() => { this.showOrHidePassword('confirm') }} />
+              }
             </span> :
             null}
         </Modal.Body>
