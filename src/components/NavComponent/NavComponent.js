@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignInAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSignInAlt, faUserCircle, faHome, faTools } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import './navComponent.css';
 import ModalComponent from '../ModalComponent/ModalComponent';
@@ -38,8 +38,8 @@ export default class NavComponent extends React.Component {
           cookies={this.props.cookies}
         />
         <nav className="navbar navbar-expand navbar-light">
-          <a className="navbar-brand" href="/">dofus élevage</a>
-          <span className="diagonal-divider"></span>
+          <a className="navbar-brand" href="/">dofus élevage <img src="/src/public/favicon.png" alt="website_favicon" className="navbar-favicon"></img></a>
+
           <button className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -51,10 +51,16 @@ export default class NavComponent extends React.Component {
           </button>
 
           <ul className="navbar-nav mr-auto">
-            <li className={this.props.url != "/elevage" ?
+            <li className={this.props.url.indexOf('tools') === -1 ?
               "nav-item nav-active" : "nav-item"}>
               <a className="nav-link" href="/">
-                Accueil<span className="sr-only">(current)</span>
+                <FontAwesomeIcon icon={faHome} /> Accueil<span className="sr-only">(current)</span>
+              </a>
+            </li>
+            <li className={this.props.url.indexOf('tools') != -1 ?
+              "nav-item nav-active" : "nav-item"}>
+              <a className="nav-link" href="/tools">
+                <FontAwesomeIcon icon={faTools} /> Outils<span className="sr-only">(current)</span>
               </a>
             </li>
           </ul>

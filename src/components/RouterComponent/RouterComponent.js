@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-// import RearingChoice from '../RearingChoice/RearingChoice';
+import ToolsChoices from '../ToolsChoices/ToolsChoices';
 import NavComponent from '../NavComponent/NavComponent';
 import Cookies from 'universal-cookie';
 import Home from './../Home/Home';
@@ -48,12 +48,9 @@ export default class RouterComponent extends React.Component {
   getComponentByUrl(page) {
     let userC = this.checkIfConnected()
     let content = ''
-    if (page === "rearing/") {
+    if (page === "tools/") {
       console.log('rearing')
-      // this.state = {
-      //   content: <RearingChoice />
-      // }
-      content = 'REARING'
+      content = <ToolsChoices />
     }
     else {
       content = <Home />

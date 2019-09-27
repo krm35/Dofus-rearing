@@ -2,22 +2,23 @@
   color : rgb(105, 153, 34) !important;
 }
 
-.diagonal-divider {
-  border : 1px solid rgb(105, 153, 34);
-  height : 50px;
-  margin-right : 1.5rem;
-  transform : skewX(-30deg)
-}
-
 .nav-item a {
   color : white !important;
+  margin-right : 1rem;
 }
 
 .nav-active a {
   background-color : rgb(105, 153, 34);
   color : white !important;
   border : 1px solid rgb(62, 90, 20);
-  border-radius: 15px;
+  border-radius: 8px;
+}
+
+.navbar-favicon {
+  max-height : 25px;
+  width : auto;
+  margin-left : 0.5rem;
+  margin-top : -0.5rem;
 }
 
 .sign-up-login li:first-child {
@@ -25,8 +26,9 @@
 }
 
 nav {
-  min-width : 600px;
+  min-width : 750px;
   background-color : rgb(39, 39, 39);
+  max-height : 70px;
 }
 
 .sign-up-login li {
@@ -34,7 +36,7 @@ nav {
   padding : 0.5rem 1rem;
 }
 
-nav svg {
+.sign-up-login svg {
   margin-right : 0.3rem;
 }
 

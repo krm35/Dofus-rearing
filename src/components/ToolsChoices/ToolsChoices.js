@@ -4,9 +4,9 @@ import React from 'react';
 import Informations from './../Informations/informations';
 // import dofusInfos from "./../dofus-infos";
 
-import './RearingChoice.css';
+import './ToolsChoices.css';
 
-export default class RearingChoice extends React.Component {
+export default class ToolsChoices extends React.Component {
 
   constructor() {
     super()
@@ -33,14 +33,14 @@ export default class RearingChoice extends React.Component {
             onClick={() => this.handleSetRendering(
               <Informations showOrRemove="show" hstr={this.handleSetRendering} />
             )}>
-            Informations
+            Mes notes (développement en cours)
           </button>
-          <button className="btn btn-craft">Crafts</button>
-          <button className="btn btn-parchemin">Parchemins</button>
-          <button className="btn btn-gestation">Gestation des dragodindes</button>
-          <button className="btn btn-mydd">Mes dragodindes</button>
-          <button className="btn btn-lastdd">Modifier la dernière dragodinde fécondée</button>
-          <button className="btn btn-fecondation-calculator">Calculer les fécondations</button>
+          <button className="btn btn-craft">Crafts --- (à venir)</button>
+          <button className="btn btn-parchemin">Parchemins --- (à venir)</button>
+          <button className="btn btn-gestation">Gestation des dragodindes --- (à venir)</button>
+          <button className="btn btn-mydd">Mes dragodindes --- (à venir)</button>
+          <button className="btn btn-lastdd">Modifier la dernière dragodinde fécondée --- (à venir)</button>
+          <button className="btn btn-fecondation-calculator">Calculer les fécondations --- (à venir)</button>
         </div>
       </React.Fragment>
     )

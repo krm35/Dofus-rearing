@@ -3,7 +3,7 @@
 "use strict";
 
 import React from 'react';
-import RearingChoice from './../RearingChoice/RearingChoice';
+import ToolsChoices from './../ToolsChoices/ToolsChoices';
 import PropTypes from "prop-types";
 
 export default class Informations extends React.Component {
@@ -55,7 +55,7 @@ export default class Informations extends React.Component {
 
   render() {
     return (
-      <h1 onClick={() => this.state.handleSetRendering(<RearingChoice />)}> TEST TEST TEST TOM TOM TOM </h1>
+      <h1 onClick={() => this.state.handleSetRendering(<ToolsChoices />)}> TEST TEST TEST TOM TOM TOM </h1>
     )
   }
 
