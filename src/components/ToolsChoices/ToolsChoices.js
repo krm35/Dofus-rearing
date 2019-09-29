@@ -2,19 +2,37 @@
 
 import React from 'react';
 import Informations from './../Informations/informations';
+import $ from "jquery";
+import axios from 'axios';
 // import dofusInfos from "./../dofus-infos";
-
 import './ToolsChoices.css';
+
 
 export default class ToolsChoices extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      rendering: false
+      rendering: false,
+      lastDD: false
     }
     this.handleSetRendering = this.handleSetRendering.bind(this)
     //console.log(dofusInfos['dragodindes'])
+  }
+
+  componentDidMount() {
+    axios.post(global.api + `/users/${userID}`)
+      .then(respond => {
+        //console.log('res : ', respond)
+        if (respond.data) {
+          console.log('Respond ok : ', respond)
+        }
+      })
+      .catch((e) => {
+        console.log('Erreur : ', e)
+      })
+    $('.top-infos')[0].innerHTML = '';
+    $('.top-infos').hide();
   }
 
   handleSetRendering(component) {
@@ -29,6 +47,7 @@ export default class ToolsChoices extends React.Component {
       <React.Fragment>
         <div className="top-infos"></div>
         <div className="home-menu">
+          <h1> Les outils</h1>
           <button className="btn btn-infos"
             onClick={() => this.handleSetRendering(
               <Informations showOrRemove="show" hstr={this.handleSetRendering} />
