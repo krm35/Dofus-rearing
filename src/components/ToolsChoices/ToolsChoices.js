@@ -4,6 +4,7 @@ import React from 'react';
 import Informations from './../Informations/informations';
 import $ from "jquery";
 import axios from 'axios';
+import PropTypes from 'prop-types';
 // import dofusInfos from "./../dofus-infos";
 import './ToolsChoices.css';
 
@@ -21,16 +22,18 @@ export default class ToolsChoices extends React.Component {
   }
 
   componentDidMount() {
-    axios.post(global.api + `/users/${userID}`)
-      .then(respond => {
-        //console.log('res : ', respond)
-        if (respond.data) {
-          console.log('Respond ok : ', respond)
-        }
-      })
-      .catch((e) => {
-        console.log('Erreur : ', e)
-      })
+    if (this.props.userCookie.id) {
+      axios.post(global.api + `/users/${this.props.userCookie.id}`)
+        .then(respond => {
+          //console.log('res : ', respond)
+          if (respond.data) {
+            console.log('Respond ok : ', respond)
+          }
+        })
+        .catch((e) => {
+          console.log('Erreur : ', e)
+        })
+    }
     $('.top-infos')[0].innerHTML = '';
     $('.top-infos').hide();
   }
@@ -66,3 +69,7 @@ export default class ToolsChoices extends React.Component {
   }
 
 }
+
+ToolsChoices.propTypes = {
+  userCookie: PropTypes.object
+};

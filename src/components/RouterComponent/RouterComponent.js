@@ -49,8 +49,7 @@ export default class RouterComponent extends React.Component {
     let userC = this.checkIfConnected()
     let content = ''
     if (page === "tools/") {
-      console.log('rearing')
-      content = <ToolsChoices />
+      content = <ToolsChoices userCookie={this.state.userCookie} />
     }
     else {
       content = <Home />
